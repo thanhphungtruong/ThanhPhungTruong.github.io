@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T. P. Truong - Ph.D. Researcher in Wireless Communications</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            background: #34495e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            overflow: hidden;
+            border: 4px solid rgba(255, 255, 255, 0.9);
+        }
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+        .title {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+        .contact-info {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+        nav {
+            background: #34495e;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        nav a:hover {
+            background: #3498db;
+        }
+        main {
+            padding: 3rem 0;
+            background: white;
+        }
+        section {
+            margin-bottom: 4rem;
+            padding: 2rem 0;
+        }
+        h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            width: 100px;
+            height: 3px;
+            background: #3498db;
+            display: block;
+            margin: 1rem auto;
+        }
+        .simple-list,
+        .experience-list,
+        .award-list,
+        .publication-list {
+            margin-left: 1.5rem;
+            color: #555;
+            line-height: 1.7;
+        }
+        .simple-list li,
+        .experience-list li,
+        .award-list li,
+        .publication-list li {
+            margin-bottom: 0.65rem;
+        }
+        .publication-list {
+            text-align: justify;
+        }
+        .education-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #e74c3c;
+        }
+        .award-link {
+            color: #2c3e50;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.5);
+        }
+        .award-link:hover {
+            color: #2980b9;
+            border-bottom-color: #2980b9;
+        }
+        .contact-section {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .contact-item {
+            padding: 1rem;
+        }
+        .contact-item h3 {
+            margin-bottom: 0.5rem;
+            color: #3498db;
+        }
+        footer {
+            background: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        .btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            margin-top: 1rem;
+        }
+        .btn:hover {
+            background: #2980b9;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .travel-point {
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        .travel-point:hover {
+            transform: scale(1.5);
+            z-index: 20;
+            animation: none;
+        }
+        .travel-shell {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+        .travel-map-wrap {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        #world-map {
+            height: 600px;
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .map-card {
+            position: absolute;
+            background: rgba(255,255,255,0.95);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .map-title {
+            top: 20px;
+            left: 20px;
+        }
+        .map-title h3 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+        .map-title p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .country-marker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid white;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+        .custom-marker {
+            background: transparent !important;
+            border: none !important;
+        }
+        .country-dot {
+            border-radius: 50%;
+        }
+        .hometown-star {
+            width: 28px;
+            height: 28px;
+            background: #e74c3c;
+            color: white;
+            clip-path: polygon(50% 0%, 61% 34%, 98% 34%, 68% 56%, 79% 91%, 50% 70%, 21% 91%, 32% 56%, 2% 34%, 39% 34%);
+        }
+        .travel-tooltip {
+            background: rgba(44, 62, 80, 0.9);
+            border: none;
+            color: white;
+            border-radius: 12px;
+            font-weight: 600;
+            padding: 4px 9px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .travel-tooltip::before {
+            border-top-color: rgba(44, 62, 80, 0.9);
+        }
+        .travel-modal-panel {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 12px;
+            width: min(1100px, 92vw);
+            max-height: 90vh;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .travel-modal-body {
+            padding: 30px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 14px;
+            margin-top: 20px;
+        }
+        .media-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e6e9ed;
+            aspect-ratio: 4 / 3;
+        }
+        .media-card img,
+        .media-card video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            background: #111;
+        }
+        .travel-empty {
+            margin-top: 20px;
+            padding: 24px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            color: #666;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            nav ul { flex-direction: column; gap: 0; }
+            nav a { display: block; margin-bottom: 0.5rem; }
+            #world-map { height: 430px; }
+            .travel-shell { padding: 1rem; }
+            .map-card {
+                position: static;
+                margin-bottom: 1rem;
+            }
+            .map-title {
+                position: static;
+            }
+            .travel-map-wrap {
+                display: flex;
+                flex-direction: column;
+            }
+            .media-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="profile-img">
+                <img id="profile-avatar" src="Avatar/Messenger_creation_89AB9034-206C-4593-B09A-87BB3EEA8BB4(1)(1)(1).jpg" alt="Thanh Phung Truong">
+            </div>
+            <h1>Thanh Phung Truong</h1>
+            <p class="title">Ph.D. Candidate</p>
+            <div class="contact-info">
+                <p>📧 truong@uclab.re.kr</p>
+                <p>🏛️ <a href="https://uclab.re.kr" style="color: rgba(255,255,255,0.9); text-decoration: none;">Ultra-Intelligent Computing/Communication Lab</a> | Chung-Ang University</p>
+                <p>🎓 <a href="https://scholar.google.com/citations?user=YdQkVpgAAAAJ&hl=vi" style="color: rgba(255,255,255,0.9); text-decoration: none;">Google Scholar</a> | <a href="https://www.researchgate.net/profile/Thanh-Phung-Truong" style="color: rgba(255,255,255,0.9); text-decoration: none;">ResearchGate</a></p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#awards">Awards</a></li>
+                <!-- <li><a href="#research">Research</a></li> -->
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#travel">Travel</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <section id="about">
+                <h2>About Me</h2>
+                <p style="font-size: 1.2rem; text-align: justify; max-width: 900px; margin: 0 auto; color: #555; line-height: 1.8;">
+                    Thanh Phung Truong received the B.E. degree in electronics and telecommunications from Ho Chi Minh City University of Technology, 
+                    Vietnam National University Ho Chi Minh City, Vietnam, in 2018, and the M.E. degree in computer science and engineering from 
+                    Chung-Ang University, South Korea, in 2022, where he is currently pursuing the Ph.D. degree in computer science and engineering. 
+                    From 2019 to 2020, he was a FPGA Engineer with VinSmart Research and Manufacture Joint Stock Company, Vingroup, Vietnam. 
+                    From 2022 to 2023, he was a Data Scientist with Viettel Networks, Viettel Group, Vietnam. He has been with the 
+                    Ultra-Intelligent Computing/Communication Laboratory, Chung-Ang University, since 2020. His research interests include 
+                    wireless communication, network architectures, quantum networks, and applied machine learning.
+                </p>
+            </section>
+            <section id="education">
+                <h2>Education & Career</h2>
+                <div class="education-item">
+                    <h3>Ph.D. in Computer Science and Engineering (March 2023 - Present)</h3>
+                    <p><strong>Chung-Ang University, Seoul, South Korea</strong></p>
+                    <p>Advisor: Prof. Sungrae Cho</p>
+                </div>
+                <div class="education-item">
+                    <h3>M.E. in Computer Science and Engineering (2020 - 2022)</h3>
+                    <p><strong>Chung-Ang University, Seoul, South Korea</strong></p>
+                </div>
+                <div class="education-item">
+                    <h3>B.E. in Electronics and Telecommunications (2014 - 2018)</h3>
+                    <p><strong>Ho Chi Minh City University of Technology, the Vietnam National University Ho Chi Minh City, Vietnam</strong></p>
+                </div>
+                <div class="education-item">
+                    <h3>Professional Experience</h3>
+                    <ul class="experience-list">
+                        <li><strong>Research Assistant</strong> - Ultra-Intelligent Computing/Communication Laboratory, Chung-Ang University (2020 - Present)</li>
+                        <li><strong>Data Scientist</strong> - Viettel Networks, Viettel Group, Vietnam (2022 - 2023)</li>
+                        <li><strong>FPGA Engineer</strong> - VinSmart Research and Manufacture Joint Stock Company, Vingroup, Vietnam (2019 - 2020)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="awards">
+                <h2>Scholarships & Awards</h2>
+                <div class="education-item">
+                    <h3>Scholarships and Research Awards</h3>
+                    <ul class="award-list">
+                        <li><a class="award-link" href="https://drive.google.com/file/d/1a4FmcNO91bNRaNoxplvLfU9CgAFlcJVx/view?usp=sharing" target="_blank" rel="noopener noreferrer"><strong>CAU Alumni Scholarship</strong></a> (2026)</li>
+                        <li><strong>Excellent in Research Award, CSE, CAU</strong> (<a class="award-link" href="https://drive.google.com/file/d/13WquTjBo9kkiQZ4vNZdtM5UN8z5UvPab/view?usp=sharing" target="_blank" rel="noopener noreferrer">2023</a>, <a class="award-link" href="https://drive.google.com/file/d/123MNi4yrVPy6EILjp2KJpLrNg-8tVKhJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">2024</a>)</li>
+                        <li><strong>Chung-Ang University Young Scientist Scholarship</strong> (2023)</li>
+                        <li><strong>Chung-Ang University Young Scientist Scholarship</strong> (2020)</li>
+                    </ul>
+                </div>
+                <div class="education-item">
+                    <h3>Paper Awards</h3>
+                    <ul class="award-list">
+                        <li><strong>Best Paper Awards:</strong> <a class="award-link" href="https://drive.google.com/file/d/1Bu7LsQcCD5mHXK4rK0SQcPnpVCJFuczD/view?usp=sharing" target="_blank" rel="noopener noreferrer">ICOIN 2026</a>, <a class="award-link" href="https://drive.google.com/file/d/1nmO8RbS9UWM1-diFeMO696oj6WLFA2wB/view?usp=sharing" target="_blank" rel="noopener noreferrer">ICIT 2023</a>, <a class="award-link" href="https://drive.google.com/file/d/1Qv_9UvXPBEzNMTLVPSvhye9zlkwZo3tn/view?usp=sharing" target="_blank" rel="noopener noreferrer">ICTC 2022</a></li>
+                        <li><strong>Excellent Paper Awards:</strong> <a class="award-link" href="https://drive.google.com/file/d/1_T4DhmYP7aT-1yhaPvO2Zeh986qgn67X/view?usp=sharing" target="_blank" rel="noopener noreferrer">ICMIC 2025</a>, <a class="award-link" href="https://drive.google.com/file/d/118304a9ZJaVROZDNkQzty7Vf5x8bPrw8/view?usp=sharing" target="_blank" rel="noopener noreferrer">ICAIIC 2025</a></li>
+                        <li><strong>Outstanding Paper Award:</strong> <a class="award-link" href="https://drive.google.com/file/d/1nG0K_2kkHfy7VsDOkMeYpx5aUdVsp7V7/view?usp=sharing" target="_blank" rel="noopener noreferrer">ICMIC 2023</a></li>
+                    </ul>
+                </div>
+            </section>
+            <!-- <section id="research">
+                <h2>Research Interests</h2>
+                <ul class="simple-list">
+                    <li>Wireless communication</li>
+                    <li>Network architectures</li>
+                    <li>Quantum networks</li>
+                    <li>Applied machine learning</li>
+                </ul> -->
+            </section>
+            <section id="publications">
+                <h2>Publications</h2>
+                <h3 style="color: #2c3e50; margin-bottom: 1.5rem; font-size: 1.8rem;">Journal Papers</h3>
+                <ol class="publication-list">
+                    <li><b>T. P. Truong</b>, N.-P. Tran, J. Oh, D. Lee, V. D. Tuong, N.-N. Dao, and S. Cho, "Energy Efficiency in Quantized MIMO-NOMA Communication Systems," <i>IEEE Transactions on Cognitive Communications and Networking</i>, vol. 12, pp. 6629-6642, March 2026, doi: 10.1109/TCCN.2024.3512847</li>
+                    <li>A.-T. Tran, <b>T. P. Truong</b>, D. Won, N.-N. Dao, and S. Cho, "Weighted Sum-Rate Maximization in Rate-Splitting MISO Downlink Systems," <i>IEEE Transactions on Network Science and Engineering</i>, vol. 13, pp. 5522-5538, January 2026, doi: 10.1109/TNSE.2024.3498735</li>
+                    <li>T. S. Do, <b>T. P. Truong</b>, Q. T. Do, D. Won, W. Noh, and S. Cho, "BidDeepSC-1.58b: 1.58-bit Bidirectional Slimmable Semantic Communication System," <i>IEEE Transactions on Vehicular Technology</i>, to appear, 2026, doi: 10.1109/TVT.2024.3511426</li>
+                    <li>T. H. Moges, <b>T. P. Truong</b>, D. S. Lakew, T. H. Huong, V. T. Hoang, N.-N. Dao, and S. Cho, "Age of Information-Aware Trajectory Optimization for Time-Sensitive UAV Systems in Uplink SCMA Networks," <i>Elsevier Computer Networks</i>, vol. 268, no. 111369, August 2025</li>
+                    <li>T. S. Do, <b>T. P. Truong</b>, Q. T. Do, and S. Cho, "TranGDeepSC: Leveraging ViT Knowledge in CNN-based Semantic Communication System," <i>Elsevier ICT Express</i>, vol. 11, no. 2, pp. 335-340, April 2025</li>
+                    <li><b>T. P. Truong</b>, T. M. T. Nguyen, T. V. Nguyen, N.-N. Dao, and S. Cho, "Energy Efficiency in RSMA-Enhanced Active RIS-Aided Quantized Downlink Systems," <i>IEEE Journal on Selected Areas in Communications</i>, vol. 43, no. 3, March 2025, doi: 10.1109/JSAC.2024.3521406</li>
+                    <li><b>T. P. Truong</b>, H. V. Nguyen, N.-N. Dao, W. Noh, and S. Cho, "Orthogonalized RSMA based Flexible Multiple Access in Digital Twin Edge Networks," <i>IEEE Transactions on Wireless Communications</i>, vol. 23, no. 12, December 2024, doi: 10.1109/TWC.2024.3468791</li>
+                    <li>T.-H. Nguyen, <b>T.P. Truong</b>, A.-T. Tran, N.-N. Dao, L. Park, and S. Cho, "Intelligent Heterogeneous Aerial Edge Computing for Advanced 5G Access," <i>IEEE Transactions on Network Science and Engineering</i>, vol. 11, no. 4, July-August 2024, doi: 10.1109/TNSE.2024.3369045</li>
+                    <li>N.-P. Tran, <b>T. P. Truong</b>, Q. T. Do, N.-N. Dao, and S. Cho, "Adaptive Content Delivery and Bitrate Adaptation for QoE Improvement in IRS-Aided RSMA-Enabled IoMT Streaming Systems," <i>Elsevier Internet of Things</i>, vol. 25, no. 101145, April 2024</li>
+                    <li><b>T. P. Truong</b>, V. D. Tuong, N.-N. Dao, and S. Cho, "FlyReflect: Joint Flying IRS Trajectory and Phase Shift Design using Deep Reinforcement Learning," <i>IEEE Internet of Things Journal</i>, vol. 10, no. 5, pp. 4605-4620, March 2023, doi: 10.1109/JIOT.2022.3220581</li>
+                    <li>T.-V. Nguyen, <b>T. P. Truong</b>, T. M. T. Nguyen, W. Noh, and S. Cho, "Achievable Rate Analysis of Two-Hop Interference Channel with Coordinated IRS Relay," <i>IEEE Transactions on Wireless Communications</i>, vol. 21, no. 9, pp. 7055-7071, September 2022, doi: 10.1109/TWC.2022.3155746</li>
+                    <li><b>T. P. Truong</b>, N.-N. Dao, and S. Cho, "HAMEC-RSMA: Enhanced Aerial Computing Systems with Rate Splitting Multiple Access," <i>IEEE Access</i>, vol. 10, pp. 52398-52409, May 2022, doi: 10.1109/ACCESS.2022.3174621</li>
+                    <li>V. D. Tuong, <b>T. P. Truong</b>, T.-V. Nguyen, W. Noh, and S. Cho, "Partial Computation Offloading in NOMA-Assisted Mobile Edge Computing Systems Using Deep Reinforcement Learning," <i>IEEE Internet of Things Journal</i>, vol. 8, no. 17, pp. 13196-13208, September 2021, doi: 10.1109/JIOT.2021.3062481</li>
+                </ol>
+                <h3 style="color: #2c3e50; margin: 3rem 0 1.5rem 0; font-size: 1.8rem;">Selected Conference Papers</h3>
+                <ol class="publication-list">
+                    <li><b>T. P. Truong</b>, A.-T. Tran, V. D. Tuong, N.-N. Dao, and S. Cho, "NOMA-Enhanced Quantized Uplink Multi-user MIMO Communications," <i>in Proc. of IEEE INFOCOM</i>, 2024 <span style="color: red; font-weight: bold;">(Acceptance Rate: 19.6%)</span></li>
+                    <li>J. Oh, D. Won, <b>T. P. Truong</b>, and S. Cho, "Communication-Efficient Federated Learning with Local-Reconstruction Error-Feedback-Based Rescaled 1-Bit Compressive Sensing," <i>in Proc. of IEEE ICC</i>, Glasgow, Scotland, UK, May 2026</li>
+                    <li><b>T. P. Truong</b>, T. M. T. Nguyen, T. V. Nguyen, N.-N. Dao, and S. Cho, "RSMA for Uplink MIMO Systems: DRL-based Achievable System Sum Rate Maximization," <i>in Proc. of IEEE GLOBECOM Workshops</i>, 2023</li>
+                    <li>T. S. Do, <b>T. P. Truong</b>, H. H. Tran, K. N. T. Tran, M. C. Ho, A. T. Tran, V. N. Vu, and S. Cho, "Multi-Task Semantic Communication System for DNA Transmission," <i>in Proc. of ICOIN</i>, Hanoi, Vietnam, January 2026 <a class="award-link" href="https://drive.google.com/file/d/1Bu7LsQcCD5mHXK4rK0SQcPnpVCJFuczD/view?usp=sharing" target="_blank" rel="noopener noreferrer"><span style="color: red; font-weight: bold;">(Best Paper Award)</span></a></li>
+                    <li><b>T. P. Truong</b>, T. S. Do, J. Kim, S. Choi, J. Oh, and S. Cho, "Efficient Offloading for Edge Computing in UAV-Assisted Maritime Networks," <i>in Proc. of ICMIC</i>, Cebu, the Philippines, August 2025 <a class="award-link" href="https://drive.google.com/file/d/1_T4DhmYP7aT-1yhaPvO2Zeh986qgn67X/view?usp=sharing" target="_blank" rel="noopener noreferrer"><span style="color: red; font-weight: bold;">(Excellent Paper Award)</span></a></li>
+                    <li>T. S. Do, <b>T. P. Truong</b>, Q.T. Do, D. Won, A.B. Wondmagegn, and S. Cho, "Super-Resolution Semantic Communication System for Satellite Image," <i>in Proc. of ICAIIC</i>, Fukuoka, Japan, February 2025 <a class="award-link" href="https://drive.google.com/file/d/118304a9ZJaVROZDNkQzty7Vf5x8bPrw8/view?usp=sharing" target="_blank" rel="noopener noreferrer"><span style="color: red; font-weight: bold;">(Excellent Paper Award)</span></a></li>
+                    <li><b>T. P. Truong</b>, T.-H. Nguyen, A.-T. Tran, S. V.-T. Tran, V. D. Tuong, L. V. Nguyen, W. Na, L. Park, and S. Cho, "Deep Reinforcement Learning-Based Sum-Rate Maximization for Uplink Multi-user SIMO-RSMA Systems," <i>in Proc. of ICIT</i>, Ho Chi Minh City, Vietnam, October 2023 <a class="award-link" href="https://drive.google.com/file/d/1nmO8RbS9UWM1-diFeMO696oj6WLFA2wB/view?usp=sharing" target="_blank" rel="noopener noreferrer"><span style="color: red; font-weight: bold;">(Best Paper Award)</span></a></li>
+                    <li><b>T. P. Truong</b>, N.-P. Tran, C. M. Ho, T. T. H. Pham, A.-T. Tran, and S. Cho, "Multiple Access in HAP-Enabled Maritime IoT Networks: A Deep Reinforcement Learning Approach," <i>in Proc. of ICMIC</i>, Jeju, South Korea, August 2023 <a class="award-link" href="https://drive.google.com/file/d/1nG0K_2kkHfy7VsDOkMeYpx5aUdVsp7V7/view?usp=sharing" target="_blank" rel="noopener noreferrer"><span style="color: red; font-weight: bold;">(Outstanding Paper Award)</span></a></li>
+                    <li>T.-H. Nguyen, <b>T. P. Truong</b>, N.-N. Dao, W. Na, H. Park and L. Park, "Deep Reinforcement Learning-based Partial Task Offloading in High Altitude Platform-aided Vehicular Networks," <i>in Proc. of ICTC</i>, Jeju Island, Korea, 2022 <a class="award-link" href="https://drive.google.com/file/d/1Qv_9UvXPBEzNMTLVPSvhye9zlkwZo3tn/view?usp=sharing" target="_blank" rel="noopener noreferrer"><span style="color: red; font-weight: bold;">(Best Paper Award)</span></a></li>
+                </ol>
+            </section>
+            <section id="travel">
+                <h2>Travel & Experiences</h2>
+                <div class="travel-shell">
+                    <div class="travel-map-wrap">
+                        <div class="map-card map-title">
+                            <h3>Travel Media</h3>
+                            <p>Photos and videos from each country</p>
+                        </div>
+
+                        <div id="world-map"></div>
+
+                    </div>
+
+                    <div id="travel-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; backdrop-filter: blur(5px);">
+                        <div class="travel-modal-panel">
+                            <button id="close-modal" class="modal-close">&times;</button>
+                            <div class="travel-modal-body">
+                                <h2 id="modal-title" style="color: #2c3e50; margin: 0 48px 6px 0;"></h2>
+                                <p id="modal-meta" style="color: #666; margin: 0;"></p>
+                                <div id="modal-media" class="media-grid"></div>
+                                <div id="modal-empty" class="travel-empty" style="display: none;">No media yet.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Thanh Phung Truong. All rights reserved.</p>
+            <p>Academic Homepage | Last updated: May 2026</p>
+        </div>
+    </footer>
+    <script src="Travel/travel-media-manifest.js"></script>
+    <script>
+        let travelMediaManifest = Array.isArray(window.TRAVEL_MEDIA_MANIFEST) ? window.TRAVEL_MEDIA_MANIFEST : [];
+        const fallbackAvatar = 'Avatar/Messenger_creation_89AB9034-206C-4593-B09A-87BB3EEA8BB4(1)(1)(1).jpg';
+        const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
+        const videoExtensions = ['.mp4', '.mov', '.m4v', '.webm'];
+        const mimeTypes = {
+            '.jpg': 'image/jpeg',
+            '.jpeg': 'image/jpeg',
+            '.png': 'image/png',
+            '.gif': 'image/gif',
+            '.webp': 'image/webp',
+            '.mp4': 'video/mp4',
+            '.mov': 'video/quicktime',
+            '.m4v': 'video/mp4',
+            '.webm': 'video/webm'
+        };
+
+        const travelLocations = [
+            { key: 'vietnam', folder: 'Vietnam', name: 'Hometown', lat: 11.0904, lng: 108.0721, type: 'home', color: '#e74c3c', marker: 'star' },
+            { key: 'south-korea', folder: 'South Korea', name: 'South Korea', lat: 36.5, lng: 127.8, type: 'study', color: '#3498db' },
+            { key: 'japan', folder: 'Japan', name: 'Japan', lat: 36.2048, lng: 138.2529, type: 'academic', color: '#3498db' },
+            { key: 'malaysia', folder: 'Malaysia', name: 'Malaysia', lat: 4.2105, lng: 101.9758, type: 'conference', color: '#3498db' },
+            { key: 'thailand', folder: 'Thailand', name: 'Thailand', lat: 15.8700, lng: 100.9925, type: 'conference', color: '#3498db' },
+            { key: 'indonesia', folder: 'Indonesia', name: 'Indonesia', lat: -2.5489, lng: 118.0149, type: 'conference', color: '#3498db' },
+            { key: 'philippine', folder: 'Philippine', name: 'Philippines', lat: 12.8797, lng: 121.7740, type: 'conference', color: '#3498db' },
+            { key: 'canada', folder: 'Canada', name: 'Canada', lat: 56.1304, lng: -106.3468, type: 'travel', color: '#3498db' }
+        ];
+
+        let map;
+        let markers = [];
+        const countryKeyAliases = {
+            'philippines': 'philippine',
+            'republic-of-korea': 'south-korea',
+            'korea': 'south-korea',
+            'viet-nam': 'vietnam'
+        };
+
+        function normalizeCountryKey(value) {
+            const normalized = value.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+            return countryKeyAliases[normalized] || normalized;
+        }
+
+        function encodeRelativePath(path) {
+            return path.split('/').map(segment => encodeURIComponent(segment)).join('/');
+        }
+
+        function cacheBustedPath(path) {
+            const separator = path.includes('?') ? '&' : '?';
+            return `${path}${separator}v=${Date.now()}`;
+        }
+
+        function extensionOf(path) {
+            const cleanPath = path.split('?')[0].split('#')[0];
+            const index = cleanPath.lastIndexOf('.');
+            return index >= 0 ? cleanPath.slice(index).toLowerCase() : '';
+        }
+
+        function mediaKind(path) {
+            const extension = extensionOf(path);
+            if (imageExtensions.includes(extension)) {
+                return 'image';
+            }
+            if (videoExtensions.includes(extension)) {
+                return 'video';
+            }
+            return '';
+        }
+
+        async function scanDirectoryFiles(directory) {
+            try {
+                const response = await fetch(encodeRelativePath(directory) + '/', { cache: 'no-store' });
+                if (!response.ok) {
+                    return null;
+                }
+
+                const html = await response.text();
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                const files = [];
+                doc.querySelectorAll('a[href]').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (!href || href.startsWith('?') || href.startsWith('#') || href.startsWith('../')) {
+                        return;
+                    }
+
+                    const url = new URL(href, response.url);
+                    const fileName = decodeURIComponent(url.pathname.split('/').pop() || '');
+                    if (!fileName || fileName.endsWith('/')) {
+                        return;
+                    }
+
+                    const kind = mediaKind(fileName);
+                    if (!kind) {
+                        return;
+                    }
+
+                    files.push({
+                        fileName,
+                        src: encodeRelativePath(`${directory}/${fileName}`),
+                        type: kind,
+                        mime: mimeTypes[extensionOf(fileName)] || ''
+                    });
+                });
+
+                return files;
+            } catch (error) {
+                return null;
+            }
+        }
+
+        function mediaItemsForLocation(location, files) {
+            return files.map(file => ({
+                country: location.folder,
+                countryKey: location.key,
+                name: file.fileName.replace(/\.[^.]+$/, ''),
+                src: file.src,
+                type: file.type,
+                mime: file.mime,
+                alt: `${location.name} travel media`
+            }));
+        }
+
+        async function refreshTravelMediaForLocation(location) {
+            const files = await scanDirectoryFiles(`Travel/${location.folder}`);
+            if (!files) {
+                return false;
+            }
+
+            travelMediaManifest = [
+                ...travelMediaManifest.filter(item => (item.countryKey || normalizeCountryKey(item.country || '')) !== location.key),
+                ...mediaItemsForLocation(location, files)
+            ];
+            return true;
+        }
+
+        async function refreshTravelMediaFromFolders() {
+            await Promise.all(travelLocations.map(location => refreshTravelMediaForLocation(location)));
+        }
+
+        function getMediaByCountry() {
+            return travelMediaManifest.reduce((groups, item) => {
+                const key = item.countryKey || normalizeCountryKey(item.country || '');
+                if (!groups[key]) {
+                    groups[key] = [];
+                }
+                groups[key].push(item);
+                return groups;
+            }, {});
+        }
+
+        function getMediaCounts(media) {
+            return {
+                photos: media.filter(item => item.type === 'image').length,
+                videos: media.filter(item => item.type === 'video').length
+            };
+        }
+
+        function initializeMap() {
+            map = L.map('world-map', {
+                center: [20, 95],
+                zoom: 2,
+                zoomControl: true,
+                scrollWheelZoom: true,
+                doubleClickZoom: true
+            });
+
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap contributors, © CartoDB'
+            }).addTo(map);
+
+            travelLocations.forEach(location => {
+                const markerSize = location.marker === 'star' ? 28 : 18;
+                const markerHtml = location.marker === 'star'
+                    ? '<div class="country-marker hometown-star"></div>'
+                    : `<div class="country-marker country-dot" style="width: ${markerSize}px; height: ${markerSize}px; background: ${location.color};"></div>`;
+                const customIcon = L.divIcon({
+                    className: 'custom-marker',
+                    html: markerHtml,
+                    iconSize: [markerSize + 6, markerSize + 6],
+                    iconAnchor: [markerSize/2 + 3, markerSize/2 + 3]
+                });
+
+                const marker = L.marker([location.lat, location.lng], { icon: customIcon })
+                    .addTo(map)
+                    .on('click', () => window.showTravelModal(location.key));
+
+                if (location.marker === 'star') {
+                    marker.bindTooltip(location.name, {
+                        permanent: true,
+                        direction: 'top',
+                        offset: [0, -markerSize / 2],
+                        className: 'travel-tooltip'
+                    });
+                }
+
+                markers.push(marker);
+            });
+        }
+
+        function createMediaElement(item) {
+            if (item.type === 'video') {
+                const card = document.createElement('div');
+                card.className = 'media-card';
+                const video = document.createElement('video');
+                video.controls = true;
+                video.preload = 'metadata';
+                video.playsInline = true;
+                video.addEventListener('error', () => {
+                    card.remove();
+                    updateModalEmptyState();
+                });
+                const source = document.createElement('source');
+                source.src = item.src;
+                source.type = item.mime || 'video/mp4';
+                source.addEventListener('error', () => {
+                    card.remove();
+                    updateModalEmptyState();
+                });
+                video.appendChild(source);
+                card.appendChild(video);
+                return card;
+            }
+
+            const card = document.createElement('a');
+            card.className = 'media-card';
+            card.href = item.src;
+            card.target = '_blank';
+            card.rel = 'noopener noreferrer';
+            const image = document.createElement('img');
+            image.src = item.src;
+            image.alt = item.alt || item.name || 'Travel photo';
+            image.loading = 'lazy';
+            image.addEventListener('error', () => {
+                card.remove();
+                updateModalEmptyState();
+            });
+            card.appendChild(image);
+            return card;
+        }
+
+        function updateModalEmptyState() {
+            const modalMedia = document.getElementById('modal-media');
+            const modalEmpty = document.getElementById('modal-empty');
+            if (modalMedia && modalEmpty) {
+                modalEmpty.style.display = modalMedia.children.length ? 'none' : 'block';
+            }
+        }
+
+        async function loadAvatar() {
+            const avatar = document.getElementById('profile-avatar');
+            if (!avatar) {
+                return;
+            }
+
+            avatar.addEventListener('error', () => {
+                const container = avatar.parentElement;
+                avatar.remove();
+                if (container) {
+                    container.textContent = 'TP';
+                }
+            }, { once: true });
+
+            const avatarFiles = await scanDirectoryFiles('Avatar');
+            const avatarFile = avatarFiles && avatarFiles.find(file => file.type === 'image');
+            avatar.src = cacheBustedPath(avatarFile ? avatarFile.src : fallbackAvatar);
+        }
+
+        window.showTravelModal = async function(countryKey) {
+            const modal = document.getElementById('travel-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalMeta = document.getElementById('modal-meta');
+            const modalMedia = document.getElementById('modal-media');
+            const modalEmpty = document.getElementById('modal-empty');
+            const location = travelLocations.find(item => item.key === countryKey);
+
+            if (!location) {
+                return;
+            }
+
+            await refreshTravelMediaForLocation(location);
+            const mediaByCountry = getMediaByCountry();
+            const media = mediaByCountry[countryKey] || [];
+            const counts = getMediaCounts(media);
+
+            modalTitle.textContent = location.name;
+            modalMeta.textContent = `${counts.photos} photos · ${counts.videos} videos`;
+            modalMedia.innerHTML = '';
+            media.forEach(item => modalMedia.appendChild(createMediaElement(item)));
+            updateModalEmptyState();
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        };
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            await Promise.all([
+                refreshTravelMediaFromFolders(),
+                loadAvatar()
+            ]);
+            initializeMap();
+
+            const modal = document.getElementById('travel-modal');
+            const closeModal = document.getElementById('close-modal');
+
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add active class to navigation items on scroll
+        window.addEventListener('scroll', function() {
+            let current = '';
+            const sections = document.querySelectorAll('section[id]');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
