@@ -1,13 +1,13 @@
 # Thanh Phung Truong
 
 Ph.D. Candidate, Computer Science and Engineering  
-Ultra-Intelligent Computing/Communication Laboratory, Chung-Ang University, Seoul, South Korea  
+[Ultra-Intelligent Computing/Communication Laboratory](https://uclab.re.kr), Chung-Ang University, Seoul, South Korea  
 Email: [truong@uclab.re.kr](mailto:truong@uclab.re.kr)  
-Lab: [uclab.re.kr](https://uclab.re.kr) | Google Scholar: [YdQkVpgAAAAJ](https://scholar.google.com/citations?user=YdQkVpgAAAAJ&hl=vi) | ResearchGate: [Thanh-Phung-Truong](https://www.researchgate.net/profile/Thanh-Phung-Truong)
+Homepage: [thanhphungtruong.github.io](https://thanhphungtruong.github.io/) | Google Scholar: [YdQkVpgAAAAJ](https://scholar.google.com/citations?user=YdQkVpgAAAAJ&hl=vi) | ResearchGate: [Thanh-Phung-Truong](https://www.researchgate.net/profile/Thanh-Phung-Truong)
 
 ## Research Profile
 
-Ph.D. candidate in Computer Science and Engineering at Chung-Ang University, advised by Prof. Sungrae Cho. Research focuses on wireless communication, applied machine learning, and network architectures, with work spanning NOMA/RSMA, RIS/IRS-aided systems, semantic communications, quantized MIMO, UAV/HAP-enabled and maritime networks, digital twin edge networks, mobile edge computing, federated learning, and resource allocation for 5G/6G communication systems.
+Thanh Phung Truong received the B.E. degree in electronics and telecommunications from Ho Chi Minh City University of Technology, Vietnam National University Ho Chi Minh City, Vietnam, in 2018, and the M.E. degree in computer science and engineering from Chung-Ang University, South Korea, in 2022, where he is currently pursuing the Ph.D. degree in computer science and engineering. From 2019 to 2020, he was a FPGA Engineer with VinSmart Research and Manufacture Joint Stock Company, Vingroup, Vietnam. From 2022 to 2023, he was a Data Scientist with Viettel Networks, Viettel Group, Vietnam. He has been with the Ultra-Intelligent Computing/Communication Laboratory, Chung-Ang University, since 2020. His research interests include wireless communication, network architectures, quantum networks, and applied machine learning.
 
 ## Education
 
@@ -16,15 +16,15 @@ March 2023 - Present
 Advisor: Prof. Sungrae Cho
 
 **M.E. in Computer Science and Engineering**, Chung-Ang University, Seoul, South Korea  
-2022
+2020 - 2022
 
-**B.E. in Electronics and Telecommunications**, Ho Chi Minh City University of Technology, Vietnam National University Ho Chi Minh City, Vietnam  
-2018
+**B.E. in Electronics and Telecommunications**, Ho Chi Minh City University of Technology, the Vietnam National University Ho Chi Minh City, Vietnam  
+2014 - 2018
 
 ## Research and Professional Experience
 
-**Research Assistant**, Ultra-Intelligent Computing/Communication Laboratory, Chung-Ang University  
-2023 - Present
+**Research Assistant**, [Ultra-Intelligent Computing/Communication Laboratory](https://uclab.re.kr), Chung-Ang University  
+2020 - Present
 
 **Data Scientist**, Viettel Networks, Viettel Group, Vietnam  
 2022 - 2023
@@ -34,31 +34,25 @@ Advisor: Prof. Sungrae Cho
 
 ## Research Interests
 
-- Wireless communications and 5G/6G networks: NOMA, RSMA, semantic communications, quantized MIMO, RIS/IRS, energy efficiency, and resource allocation.
-- AI and machine learning for networks: deep reinforcement learning, federated learning, semantic communication architectures, and intelligent resource management.
-- Network architectures: UAV/HAP-assisted networks, maritime IoT, mobile edge computing, digital twin edge networks, and quantum communication.
+- Wireless communication
+- Network architectures
+- Quantum networks
+- Applied machine learning
 
 ## Honors, Scholarships, and Awards
 
-### Scholarships
+### Scholarships and Research Awards
 
-- **CAU Alumni Scholarship**, Chung-Ang University Graduate School Alumni Association, 2026.
+- [**CAU Alumni Scholarship**](https://drive.google.com/file/d/1a4FmcNO91bNRaNoxplvLfU9CgAFlcJVx/view?usp=sharing), Chung-Ang University Graduate School Alumni Association, 2026.
+- **Excellent in Research Award, CSE, CAU** ([2023](https://drive.google.com/file/d/13WquTjBo9kkiQZ4vNZdtM5UN8z5UvPab/view?usp=sharing), [2024](https://drive.google.com/file/d/123MNi4yrVPy6EILjp2KJpLrNg-8tVKhJ/view?usp=sharing)).
 - **Chung-Ang University Young Scientist Scholarship**, 2023.
 - **Chung-Ang University Young Scientist Scholarship**, 2020.
 
-### Research Excellence
-
-- **Excellence in Research Award 2024**, School of Computer Science and Engineering, Chung-Ang University; doctoral-course top distinction and paper-of-the-year recognition, awarded May 28, 2025.
-- **Excellence in Research Award 2023**, School of Computer Science and Engineering, Chung-Ang University; doctoral-course top distinction and paper-of-the-year recognition, awarded June 24, 2024.
-
 ### Paper Awards
 
-- **Best Paper Award**, ICOIN 2026, "Multi-Task Semantic Communication System for DNA Transmission."
-- **Excellent Paper Award**, ICMIC 2025, "Efficient Offloading for Edge Computing in UAV-Assisted Maritime Networks."
-- **Excellent Paper Award**, ICAIIC 2025, "Super-Resolution Semantic Communication System for Satellite Image."
-- **Best Paper Award**, ICIT 2023, "Deep Reinforcement Learning-Based Sum-Rate Maximization for Uplink Multi-user SIMO-RSMA Systems."
-- **Outstanding Paper Award**, ICMIC 2023, "Multiple Access in HAP-Enabled Maritime IoT Networks: A Deep Reinforcement Learning Approach."
-- **Best Paper Award**, ICTC 2022, "Deep Reinforcement Learning-based Partial Task Offloading in High Altitude Platform-aided Vehicular Networks."
+- **Best Paper Awards:** [ICOIN 2026](https://drive.google.com/file/d/1Bu7LsQcCD5mHXK4rK0SQcPnpVCJFuczD/view?usp=sharing), [ICIT 2023](https://drive.google.com/file/d/1nmO8RbS9UWM1-diFeMO696oj6WLFA2wB/view?usp=sharing), [ICTC 2022](https://drive.google.com/file/d/1Qv_9UvXPBEzNMTLVPSvhye9zlkwZo3tn/view?usp=sharing).
+- **Excellent Paper Awards:** [ICMIC 2025](https://drive.google.com/file/d/1_T4DhmYP7aT-1yhaPvO2Zeh986qgn67X/view?usp=sharing), [ICAIIC 2025](https://drive.google.com/file/d/118304a9ZJaVROZDNkQzty7Vf5x8bPrw8/view?usp=sharing).
+- **Outstanding Paper Award:** [ICMIC 2023](https://drive.google.com/file/d/1nG0K_2kkHfy7VsDOkMeYpx5aUdVsp7V7/view?usp=sharing).
 
 ## Publications
 
@@ -80,17 +74,17 @@ Advisor: Prof. Sungrae Cho
 
 ### Selected Conference Papers
 
-1. **T. P. Truong**, A.-T. Tran, V. D. Tuong, N.-N. Dao, and S. Cho, "NOMA-Enhanced Quantized Uplink Multi-user MIMO Communications," in *Proc. of IEEE INFOCOM*, 2024. Acceptance rate: 19.6%.
+1. **T. P. Truong**, A.-T. Tran, V. D. Tuong, N.-N. Dao, and S. Cho, "NOMA-Enhanced Quantized Uplink Multi-user MIMO Communications," in *Proc. of IEEE INFOCOM*, 2024 (Acceptance Rate: 19.6%).
 2. J. Oh, D. Won, **T. P. Truong**, and S. Cho, "Communication-Efficient Federated Learning with Local-Reconstruction Error-Feedback-Based Rescaled 1-Bit Compressive Sensing," in *Proc. of IEEE ICC*, Glasgow, Scotland, UK, May 2026.
 3. **T. P. Truong**, T. M. T. Nguyen, T. V. Nguyen, N.-N. Dao, and S. Cho, "RSMA for Uplink MIMO Systems: DRL-based Achievable System Sum Rate Maximization," in *Proc. of IEEE GLOBECOM Workshops*, 2023.
-4. T. S. Do, **T. P. Truong**, H. H. Tran, K. N. T. Tran, M. C. Ho, A. T. Tran, V. N. Vu, and S. Cho, "Multi-Task Semantic Communication System for DNA Transmission," in *Proc. of ICOIN*, Hanoi, Vietnam, January 2026. Best Paper Award.
-5. **T. P. Truong**, T. S. Do, J. Kim, S. Choi, J. Oh, and S. Cho, "Efficient Offloading for Edge Computing in UAV-Assisted Maritime Networks," in *Proc. of ICMIC*, Cebu, the Philippines, August 2025. Excellent Paper Award.
-6. T. S. Do, **T. P. Truong**, Q. T. Do, D. Won, A. B. Wondmagegn, and S. Cho, "Super-Resolution Semantic Communication System for Satellite Image," in *Proc. of ICAIIC*, Fukuoka, Japan, February 2025. Excellent Paper Award.
-7. **T. P. Truong**, T.-H. Nguyen, A.-T. Tran, S. V.-T. Tran, V. D. Tuong, L. V. Nguyen, W. Na, L. Park, and S. Cho, "Deep Reinforcement Learning-Based Sum-Rate Maximization for Uplink Multi-user SIMO-RSMA Systems," in *Proc. of ICIT*, Ho Chi Minh City, Vietnam, October 2023. Best Paper Award.
-8. **T. P. Truong**, N.-P. Tran, C. M. Ho, T. T. H. Pham, A.-T. Tran, and S. Cho, "Multiple Access in HAP-Enabled Maritime IoT Networks: A Deep Reinforcement Learning Approach," in *Proc. of ICMIC*, Jeju, South Korea, August 2023. Outstanding Paper Award.
-9. T.-H. Nguyen, **T. P. Truong**, N.-N. Dao, W. Na, H. Park, and L. Park, "Deep Reinforcement Learning-based Partial Task Offloading in High Altitude Platform-aided Vehicular Networks," in *Proc. of ICTC*, Jeju Island, South Korea, 2022. Best Paper Award.
+4. T. S. Do, **T. P. Truong**, H. H. Tran, K. N. T. Tran, M. C. Ho, A. T. Tran, V. N. Vu, and S. Cho, "Multi-Task Semantic Communication System for DNA Transmission," in *Proc. of ICOIN*, Hanoi, Vietnam, January 2026 (Best Paper Award).
+5. **T. P. Truong**, T. S. Do, J. Kim, S. Choi, J. Oh, and S. Cho, "Efficient Offloading for Edge Computing in UAV-Assisted Maritime Networks," in *Proc. of ICMIC*, Cebu, the Philippines, August 2025 (Excellent Paper Award).
+6. T. S. Do, **T. P. Truong**, Q. T. Do, D. Won, A. B. Wondmagegn, and S. Cho, "Super-Resolution Semantic Communication System for Satellite Image," in *Proc. of ICAIIC*, Fukuoka, Japan, February 2025 (Excellent Paper Award).
+7. **T. P. Truong**, T.-H. Nguyen, A.-T. Tran, S. V.-T. Tran, V. D. Tuong, L. V. Nguyen, W. Na, L. Park, and S. Cho, "Deep Reinforcement Learning-Based Sum-Rate Maximization for Uplink Multi-user SIMO-RSMA Systems," in *Proc. of ICIT*, Ho Chi Minh City, Vietnam, October 2023 (Best Paper Award).
+8. **T. P. Truong**, N.-P. Tran, C. M. Ho, T. T. H. Pham, A.-T. Tran, and S. Cho, "Multiple Access in HAP-Enabled Maritime IoT Networks: A Deep Reinforcement Learning Approach," in *Proc. of ICMIC*, Jeju, South Korea, August 2023 (Outstanding Paper Award).
+9. T.-H. Nguyen, **T. P. Truong**, N.-N. Dao, W. Na, H. Park, and L. Park, "Deep Reinforcement Learning-based Partial Task Offloading in High Altitude Platform-aided Vehicular Networks," in *Proc. of ICTC*, Jeju Island, South Korea, 2022 (Best Paper Award).
 
 ## References
 
-Available upon request.
-
+- [Prof. Sungrae Cho](http://cau.ac.kr/~srcho/), Chung-Ang University.
+- [Prof. Nhu-Ngoc Dao](https://nndao.github.io/), Sejong University.

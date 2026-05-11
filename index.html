@@ -128,6 +128,40 @@
         .publication-list {
             text-align: justify;
         }
+
+        .publication-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin: 0 0 1.2rem 0;
+            border-bottom: 1px solid #d9e2ec;
+        }
+
+        .publication-tab {
+            background: transparent;
+            border: 0;
+            border-bottom: 3px solid transparent;
+            color: #555;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.7rem 1rem;
+        }
+
+        .publication-tab:hover,
+        .publication-tab:focus {
+            color: #2c3e50;
+        }
+
+        .publication-tab.active {
+            border-bottom-color: #3498db;
+            color: #2c3e50;
+        }
+
+        .publication-tab-panel[hidden] {
+            display: none;
+        }
+
         .education-item {
             background: #f8f9fa;
             padding: 1.5rem;
@@ -455,21 +489,37 @@
             <section id="publications">
                 <h2>Publications</h2>
                 <h3 style="color: #2c3e50; margin-bottom: 1.5rem; font-size: 1.8rem;">Journal Papers</h3>
-                <ol class="publication-list">
-                    <li><b>T. P. Truong</b>, N.-P. Tran, J. Oh, D. Lee, V. D. Tuong, N.-N. Dao, and S. Cho, "Energy Efficiency in Quantized MIMO-NOMA Communication Systems," <i>IEEE Transactions on Cognitive Communications and Networking</i>, vol. 12, pp. 6629-6642, March 2026, doi: 10.1109/TCCN.2024.3512847</li>
-                    <li>A.-T. Tran, <b>T. P. Truong</b>, D. Won, N.-N. Dao, and S. Cho, "Weighted Sum-Rate Maximization in Rate-Splitting MISO Downlink Systems," <i>IEEE Transactions on Network Science and Engineering</i>, vol. 13, pp. 5522-5538, January 2026, doi: 10.1109/TNSE.2024.3498735</li>
-                    <li>T. S. Do, <b>T. P. Truong</b>, Q. T. Do, D. Won, W. Noh, and S. Cho, "BidDeepSC-1.58b: 1.58-bit Bidirectional Slimmable Semantic Communication System," <i>IEEE Transactions on Vehicular Technology</i>, to appear, 2026, doi: 10.1109/TVT.2024.3511426</li>
-                    <li>T. H. Moges, <b>T. P. Truong</b>, D. S. Lakew, T. H. Huong, V. T. Hoang, N.-N. Dao, and S. Cho, "Age of Information-Aware Trajectory Optimization for Time-Sensitive UAV Systems in Uplink SCMA Networks," <i>Elsevier Computer Networks</i>, vol. 268, no. 111369, August 2025</li>
-                    <li>T. S. Do, <b>T. P. Truong</b>, Q. T. Do, and S. Cho, "TranGDeepSC: Leveraging ViT Knowledge in CNN-based Semantic Communication System," <i>Elsevier ICT Express</i>, vol. 11, no. 2, pp. 335-340, April 2025</li>
-                    <li><b>T. P. Truong</b>, T. M. T. Nguyen, T. V. Nguyen, N.-N. Dao, and S. Cho, "Energy Efficiency in RSMA-Enhanced Active RIS-Aided Quantized Downlink Systems," <i>IEEE Journal on Selected Areas in Communications</i>, vol. 43, no. 3, March 2025, doi: 10.1109/JSAC.2024.3521406</li>
-                    <li><b>T. P. Truong</b>, H. V. Nguyen, N.-N. Dao, W. Noh, and S. Cho, "Orthogonalized RSMA based Flexible Multiple Access in Digital Twin Edge Networks," <i>IEEE Transactions on Wireless Communications</i>, vol. 23, no. 12, December 2024, doi: 10.1109/TWC.2024.3468791</li>
-                    <li>T.-H. Nguyen, <b>T.P. Truong</b>, A.-T. Tran, N.-N. Dao, L. Park, and S. Cho, "Intelligent Heterogeneous Aerial Edge Computing for Advanced 5G Access," <i>IEEE Transactions on Network Science and Engineering</i>, vol. 11, no. 4, July-August 2024, doi: 10.1109/TNSE.2024.3369045</li>
-                    <li>N.-P. Tran, <b>T. P. Truong</b>, Q. T. Do, N.-N. Dao, and S. Cho, "Adaptive Content Delivery and Bitrate Adaptation for QoE Improvement in IRS-Aided RSMA-Enabled IoMT Streaming Systems," <i>Elsevier Internet of Things</i>, vol. 25, no. 101145, April 2024</li>
-                    <li><b>T. P. Truong</b>, V. D. Tuong, N.-N. Dao, and S. Cho, "FlyReflect: Joint Flying IRS Trajectory and Phase Shift Design using Deep Reinforcement Learning," <i>IEEE Internet of Things Journal</i>, vol. 10, no. 5, pp. 4605-4620, March 2023, doi: 10.1109/JIOT.2022.3220581</li>
-                    <li>T.-V. Nguyen, <b>T. P. Truong</b>, T. M. T. Nguyen, W. Noh, and S. Cho, "Achievable Rate Analysis of Two-Hop Interference Channel with Coordinated IRS Relay," <i>IEEE Transactions on Wireless Communications</i>, vol. 21, no. 9, pp. 7055-7071, September 2022, doi: 10.1109/TWC.2022.3155746</li>
-                    <li><b>T. P. Truong</b>, N.-N. Dao, and S. Cho, "HAMEC-RSMA: Enhanced Aerial Computing Systems with Rate Splitting Multiple Access," <i>IEEE Access</i>, vol. 10, pp. 52398-52409, May 2022, doi: 10.1109/ACCESS.2022.3174621</li>
-                    <li>V. D. Tuong, <b>T. P. Truong</b>, T.-V. Nguyen, W. Noh, and S. Cho, "Partial Computation Offloading in NOMA-Assisted Mobile Edge Computing Systems Using Deep Reinforcement Learning," <i>IEEE Internet of Things Journal</i>, vol. 8, no. 17, pp. 13196-13208, September 2021, doi: 10.1109/JIOT.2021.3062481</li>
-                </ol>
+                <div class="publication-tabs" role="tablist" aria-label="Journal paper status">
+                    <button class="publication-tab active" id="tab-published-journals" type="button" role="tab" aria-selected="true" aria-controls="published-journals" data-publication-tab="published-journals">Published</button>
+                    <button class="publication-tab" id="tab-submitted-journals" type="button" role="tab" aria-selected="false" aria-controls="submitted-journals" data-publication-tab="submitted-journals">Submitted/In revision</button>
+                </div>
+                <div id="published-journals" class="publication-tab-panel" role="tabpanel" aria-labelledby="tab-published-journals">
+                    <ol class="publication-list">
+                        <li><b>T. P. Truong</b>, N.-P. Tran, J. Oh, D. Lee, V. D. Tuong, N.-N. Dao, and S. Cho, "Energy Efficiency in Quantized MIMO-NOMA Communication Systems," <i>IEEE Transactions on Cognitive Communications and Networking</i>, vol. 12, pp. 6629-6642, March 2026, doi: 10.1109/TCCN.2024.3512847</li>
+                        <li>A.-T. Tran, <b>T. P. Truong</b>, D. Won, N.-N. Dao, and S. Cho, "Weighted Sum-Rate Maximization in Rate-Splitting MISO Downlink Systems," <i>IEEE Transactions on Network Science and Engineering</i>, vol. 13, pp. 5522-5538, January 2026, doi: 10.1109/TNSE.2024.3498735</li>
+                        <li>T. S. Do, <b>T. P. Truong</b>, Q. T. Do, D. Won, W. Noh, and S. Cho, "BidDeepSC-1.58b: 1.58-bit Bidirectional Slimmable Semantic Communication System," <i>IEEE Transactions on Vehicular Technology</i>, to appear, 2026, doi: 10.1109/TVT.2024.3511426</li>
+                        <li>T. H. Moges, <b>T. P. Truong</b>, D. S. Lakew, T. H. Huong, V. T. Hoang, N.-N. Dao, and S. Cho, "Age of Information-Aware Trajectory Optimization for Time-Sensitive UAV Systems in Uplink SCMA Networks," <i>Elsevier Computer Networks</i>, vol. 268, no. 111369, August 2025</li>
+                        <li>T. S. Do, <b>T. P. Truong</b>, Q. T. Do, and S. Cho, "TranGDeepSC: Leveraging ViT Knowledge in CNN-based Semantic Communication System," <i>Elsevier ICT Express</i>, vol. 11, no. 2, pp. 335-340, April 2025</li>
+                        <li><b>T. P. Truong</b>, T. M. T. Nguyen, T. V. Nguyen, N.-N. Dao, and S. Cho, "Energy Efficiency in RSMA-Enhanced Active RIS-Aided Quantized Downlink Systems," <i>IEEE Journal on Selected Areas in Communications</i>, vol. 43, no. 3, March 2025, doi: 10.1109/JSAC.2024.3521406</li>
+                        <li><b>T. P. Truong</b>, H. V. Nguyen, N.-N. Dao, W. Noh, and S. Cho, "Orthogonalized RSMA based Flexible Multiple Access in Digital Twin Edge Networks," <i>IEEE Transactions on Wireless Communications</i>, vol. 23, no. 12, December 2024, doi: 10.1109/TWC.2024.3468791</li>
+                        <li>T.-H. Nguyen, <b>T.P. Truong</b>, A.-T. Tran, N.-N. Dao, L. Park, and S. Cho, "Intelligent Heterogeneous Aerial Edge Computing for Advanced 5G Access," <i>IEEE Transactions on Network Science and Engineering</i>, vol. 11, no. 4, July-August 2024, doi: 10.1109/TNSE.2024.3369045</li>
+                        <li>N.-P. Tran, <b>T. P. Truong</b>, Q. T. Do, N.-N. Dao, and S. Cho, "Adaptive Content Delivery and Bitrate Adaptation for QoE Improvement in IRS-Aided RSMA-Enabled IoMT Streaming Systems," <i>Elsevier Internet of Things</i>, vol. 25, no. 101145, April 2024</li>
+                        <li><b>T. P. Truong</b>, V. D. Tuong, N.-N. Dao, and S. Cho, "FlyReflect: Joint Flying IRS Trajectory and Phase Shift Design using Deep Reinforcement Learning," <i>IEEE Internet of Things Journal</i>, vol. 10, no. 5, pp. 4605-4620, March 2023, doi: 10.1109/JIOT.2022.3220581</li>
+                        <li>T.-V. Nguyen, <b>T. P. Truong</b>, T. M. T. Nguyen, W. Noh, and S. Cho, "Achievable Rate Analysis of Two-Hop Interference Channel with Coordinated IRS Relay," <i>IEEE Transactions on Wireless Communications</i>, vol. 21, no. 9, pp. 7055-7071, September 2022, doi: 10.1109/TWC.2022.3155746</li>
+                        <li><b>T. P. Truong</b>, N.-N. Dao, and S. Cho, "HAMEC-RSMA: Enhanced Aerial Computing Systems with Rate Splitting Multiple Access," <i>IEEE Access</i>, vol. 10, pp. 52398-52409, May 2022, doi: 10.1109/ACCESS.2022.3174621</li>
+                        <li>V. D. Tuong, <b>T. P. Truong</b>, T.-V. Nguyen, W. Noh, and S. Cho, "Partial Computation Offloading in NOMA-Assisted Mobile Edge Computing Systems Using Deep Reinforcement Learning," <i>IEEE Internet of Things Journal</i>, vol. 8, no. 17, pp. 13196-13208, September 2021, doi: 10.1109/JIOT.2021.3062481</li>
+                    </ol>
+                </div>
+                <div id="submitted-journals" class="publication-tab-panel" role="tabpanel" aria-labelledby="tab-submitted-journals" hidden>
+                    <ol class="publication-list">
+                        <li><b>Thanh Phung Truong</b>, Kiet Nguyen Tuan Tran, Huy Dang Mac, Tung Son Do, and Sungrae Cho, "Long-Distance Quantum Communication Networks: From Protocols to Field Deployments".</li>
+                        <li><b>Thanh Phung Truong</b> and Sungrae Cho, "Reinforcement Learning-based Multi-path Entanglement Routing in Quantum Networks".</li>
+                        <li>Nhu-Ngoc Dao, Tung Son Do, <b>Thanh Phung Truong</b>, Tuan Anh Nguyen, Nguyen Xuan Mung, Woongsoo Na, and Sungrae Cho, "Toward AI-Native Networking Transparency: The Emerging Paradigm of Machine Autolearning".</li>
+                        <li>Kiet Nguyen Tuan Tran, <b>Thanh Phung Truong</b>, Tung Son Do, Manh Cuong Ho, Nhu-Ngoc Dao, and Sungrae Cho, "Intelligent Spectral Efficiency Maximization for OTFS-RSMA Communications in High-Mobility IoT Networks".</li>
+                        <li>Tung Son Do, <b>Thanh Phung Truong</b>, Manh Cuong Ho, Quang Tuan Do, Nhu-Ngoc Dao, Hyunbum Kim, and Sungrae Cho, "Optimal Mean-Field Stackelberg Game-Inspired Resource Allocation for Scalable Multi-Modal Semantic Communications in 6G Networks".</li>
+                        <li><b>Thanh Phung Truong</b>, Tung Son Do, Quang Tuan Do, Manh Cuong Ho, Dongwook Won, Anh-Tien Tran, and Sungrae Cho, "UAV-Enabled Semantic-Bit Coexisting Communication Relay Systems".</li>
+                    </ol>
+                </div>
                 <h3 style="color: #2c3e50; margin: 3rem 0 1.5rem 0; font-size: 1.8rem;">Selected Conference Papers</h3>
                 <ol class="publication-list">
                     <li><b>T. P. Truong</b>, A.-T. Tran, V. D. Tuong, N.-N. Dao, and S. Cho, "NOMA-Enhanced Quantized Uplink Multi-user MIMO Communications," <i>in Proc. of IEEE INFOCOM</i>, 2024 <span style="color: red; font-weight: bold;">(Acceptance Rate: 19.6%)</span></li>
@@ -812,7 +862,35 @@
             document.body.style.overflow = 'hidden';
         };
 
+        function initializePublicationTabs() {
+            const publicationSection = document.getElementById('publications');
+            if (!publicationSection) {
+                return;
+            }
+
+            publicationSection.querySelectorAll('[data-publication-tab]').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetId = tab.dataset.publicationTab;
+                    const tabList = tab.closest('.publication-tabs');
+                    if (!targetId || !tabList) {
+                        return;
+                    }
+
+                    tabList.querySelectorAll('[data-publication-tab]').forEach(button => {
+                        const isActive = button === tab;
+                        button.classList.toggle('active', isActive);
+                        button.setAttribute('aria-selected', String(isActive));
+                    });
+
+                    publicationSection.querySelectorAll('.publication-tab-panel').forEach(panel => {
+                        panel.hidden = panel.id !== targetId;
+                    });
+                });
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', async function() {
+            initializePublicationTabs();
             await Promise.all([
                 refreshTravelMediaFromFolders(),
                 loadAvatar()
